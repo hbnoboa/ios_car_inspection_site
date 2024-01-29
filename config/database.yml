@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  host: 	silly.db.elephantsql.com
+  database: fqhbjkyt
+  port: 5432
+  username: fqhbjkyt
+  password: QsW7kRhqIQPwh72Qzh3fh6DAxdLF7Wc4
+
+test:
+  <<: *default
+  host: 	silly.db.elephantsql.com
+  database: fqhbjkyt
+  port: 5432
+  username: fqhbjkyt
+  password: QsW7kRhqIQPwh72Qzh3fh6DAxdLF7Wc4
+
+production:
+  <<: *default
+  database: fqhbjkyt
+  username: fqhbjkyt
+  password: QsW7kRhqIQPwh72Qzh3fh6DAxdLF7Wc4
+
