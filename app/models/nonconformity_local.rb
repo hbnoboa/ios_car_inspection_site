@@ -1,0 +1,2 @@
+class NonconformityLocal < ApplicationRecord
+end

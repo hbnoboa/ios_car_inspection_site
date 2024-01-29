@@ -1,0 +1,2 @@
+class NonconformityType < ApplicationRecord
+end

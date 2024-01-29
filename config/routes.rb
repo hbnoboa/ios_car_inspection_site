@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
-  get 'home/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :nonconformities
+  resources :measures
+  resources :quadrants
+  resources :nonconformity_locals
+  resources :nonconformity_levels
+  resources :nonconformity_types
+  resources :vehicle_parts
+  resources :vehicles
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+  }
+
+  get 'home', to: 'home#index'
+  root 'home#index'
+
 end

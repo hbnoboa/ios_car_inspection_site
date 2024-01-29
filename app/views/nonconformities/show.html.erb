@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @nonconformity %>
+
+<div>
+  <%= link_to "Edit this nonconformity", edit_nonconformity_path(@nonconformity) %> |
+  <%= link_to "Back to nonconformities", nonconformities_path %>
+
+  <%= button_to "Destroy this nonconformity", @nonconformity, method: :delete %>
+</div>
