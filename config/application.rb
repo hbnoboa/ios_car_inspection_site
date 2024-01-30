@@ -18,14 +18,6 @@ module IosCarInspectionSite
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'  # You might want to specify specific origins instead of allowing all
-        resource '*',
-          headers: :any,
-          methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: false
-          credentials: true
-      end
-    end
+
   end
 end
