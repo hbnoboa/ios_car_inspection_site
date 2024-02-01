@@ -20,3 +20,7 @@ class Api::V1::SessionsController < Devise::SessionsController
         devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
     end
 end
+
+# curl -X POST -H "Content-Type: application/json" 
+# -d '{"api_v1_user": {"email": "hbnoboa11@gmail.com", "password": "@#12345Ab"}}' 
+# https://ios-car-f8bf78f8eb62.herokuapp.com/api/v1/users/sign_in

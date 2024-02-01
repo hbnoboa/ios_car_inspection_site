@@ -118,7 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_193034) do
 
   create_table "vehicles", force: :cascade do |t|
     t.string "location"
-    t.string "type"
+    t.string "vehicleType"
     t.string "chassis"
     t.integer "nonconformity"
     t.string "model"
