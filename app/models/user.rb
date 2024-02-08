@@ -12,16 +12,14 @@ class User < ApplicationRecord
 
   validates :role, inclusion: { in: ROLES }
 
-  before_save :ensure_authentication_token
-
-  def ensure_authentication_token
-    self.authentication_token ||= generate_unique_token
+  def generate_authentication_token
+    JWT.encode({ user_id: id }, Rails.application.secrets.secret_key_base, 'HS256')
   end
 
-  def generate_unique_token
-    loop do
-      token = Devise.friendly_token
-      break token unless User.exists?(authentication_token: token)
-    end
+  def self.find_by_authentication_token(token)
+    decoded_token = JWT.decode(token, Rails.application.secrets.secret_key_base, true, algorithm: 'HS256')[0]
+    find_by(id: decoded_token['user_id']) if decoded_token.present?
+  rescue JWT::DecodeError
+    nil
   end
 end
