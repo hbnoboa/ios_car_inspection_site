@@ -1,5 +1,4 @@
 class VehiclesController < ApplicationController
-  before_action :authenticate_with_token!
   before_action :set_vehicle, only: %i[ show edit update destroy ]
 
   # GET /vehicles or /vehicles.json
@@ -71,19 +70,5 @@ class VehiclesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def vehicle_params
       params.require(:vehicle).permit(:location, :vehicleType, :chassis, :nonconformity, :model, :status, :ship, :situation, :observations)
-    end
-
-    def authenticate_with_token!
-      puts "started"
-      authenticate_or_request_with_http_token do |token, options|
-        @auth_token = token
-        puts token
-        user = User.find_by(authentication_token: token)
-        if user
-          @current_user = user
-        else
-          false
-        end
-      end
     end
 end
