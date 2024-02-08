@@ -20,12 +20,6 @@ class Api::V1::SessionsController < Devise::SessionsController
     def configure_sign_in_params
       devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
     end
-  
-    private
-  
-    def generate_token(user)
-      user.generate_authentication_token!
-    end
   end
   
 # curl -X POST -H "Content-Type: application/json" 
