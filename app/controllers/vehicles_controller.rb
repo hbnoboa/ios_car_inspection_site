@@ -76,6 +76,7 @@ class VehiclesController < ApplicationController
     def authenticate_with_token!
       authenticate_or_request_with_http_token do |token, _options|
         User.find_by(authentication_token: token)
+        puts token
       end
     end
 end
