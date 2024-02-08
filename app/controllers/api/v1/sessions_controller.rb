@@ -24,7 +24,7 @@ class Api::V1::SessionsController < Devise::SessionsController
     private
   
     def generate_token(user)
-      user.generate_authentication_token!
+      user.ensure_authentication_token!
     end
   end
   
