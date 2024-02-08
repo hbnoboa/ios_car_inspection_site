@@ -20,7 +20,7 @@
 
   <div>
     <%= f.label :role %><br />
-    <%= f.select :role, User.roles.keys %>
+    <%= f.select :role, User::ROLES %>
   </div>
 
   <div class="field">
