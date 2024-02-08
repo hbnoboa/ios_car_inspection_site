@@ -17,7 +17,7 @@ class User < ApplicationRecord
   def ensure_authentication_token
     self.authentication_token ||= generate_unique_token
   end
-
+  
   def generate_unique_token
     loop do
       token = Devise.friendly_token

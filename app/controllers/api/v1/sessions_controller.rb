@@ -6,7 +6,7 @@ class Api::V1::SessionsController < Devise::SessionsController
     def create
       resource = warden.authenticate!(auth_options)
       sign_in(resource_name, resource)
-      token = generate_token(resource) # Generate authorization token
+      token = generate_token(resource)
       render json: { success: true, message: 'Logged in successfully', user: resource, auth_token: token }
     end
   

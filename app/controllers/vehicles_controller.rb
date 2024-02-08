@@ -73,14 +73,8 @@ class VehiclesController < ApplicationController
       params.require(:vehicle).permit(:location, :vehicleType, :chassis, :nonconformity, :model, :status, :ship, :situation, :observations)
     end
 
-    def bearer_token
-      pattern = /^Bearer /
-      header  = request.headers['Authorization']
-      header.gsub(pattern, '') if header && header.match(pattern)
-    end
-
     def authenticate_with_token!
-      puts "aaaaaaaaaaaaaa"
+      puts "started"
       authenticate_or_request_with_http_token do |token, options|
         @auth_token = token
         puts token
@@ -91,6 +85,5 @@ class VehiclesController < ApplicationController
           false
         end
       end
-      puts "bbbbbbbbbbbbbbbb"
     end
 end
