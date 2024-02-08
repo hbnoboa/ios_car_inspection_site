@@ -75,6 +75,7 @@ class VehiclesController < ApplicationController
 
     def authenticate_with_token!
       authenticate_or_request_with_http_token do |token, _options|
+        puts "Received token: #{token}" # Add this line to log the token value
         user = User.find_by(authentication_token: token)
         if user
           @current_user = user
