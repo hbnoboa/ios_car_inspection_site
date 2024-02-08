@@ -14,8 +14,6 @@ class User < ApplicationRecord
 
   before_save :ensure_authentication_token
 
-  private
-
   def ensure_authentication_token
     self.authentication_token ||= generate_unique_token
   end
