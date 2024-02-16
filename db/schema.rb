@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_09_111221) do
     t.bigint "nonconformity_locals_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "vehicle_id"
     t.index ["measures_id"], name: "index_nonconformities_on_measures_id"
     t.index ["nonconformity_levels_id"], name: "index_nonconformities_on_nonconformity_levels_id"
     t.index ["nonconformity_locals_id"], name: "index_nonconformities_on_nonconformity_locals_id"
@@ -179,6 +180,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_09_111221) do
   add_foreign_key "nonconformities", "nonconformity_types", column: "nonconformity_types_id"
   add_foreign_key "nonconformities", "quadrants", column: "quadrants_id"
   add_foreign_key "nonconformities", "vehicle_parts", column: "vehicle_parts_id"
+  add_foreign_key "nonconformities", "vehicles", name: "nonconformities_vehicle_id_fkey"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
 end

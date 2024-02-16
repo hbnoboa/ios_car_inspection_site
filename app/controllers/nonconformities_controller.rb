@@ -65,6 +65,6 @@ class NonconformitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def nonconformity_params
-      params.require(:nonconformity).permit(:vehicleParts_id, :nonconformityTypes_id, :nonconformityLevels_id, :quadrants_id, :measures_id, :nonconformityLocals_id)
+      params.require(:nonconformity).permit(:vehicle_id, :vehicleParts_id, :nonconformityTypes_id, :nonconformityLevels_id, :quadrants_id, :measures_id, :nonconformityLocals_id)
     end
 end
