@@ -65,6 +65,6 @@ class NonconformityTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def nonconformity_type_params
-      params.require(:nonconformity_type).permit(:type)
+      params.require(:nonconformity_type).permit(:nctype)
     end
 end
