@@ -1,1 +1,1 @@
-json.partial! "nonconformities/nonconformity", nonconformity: @nonconformity
+json.partial! "vehicles/nonconformities/nonconformity", nonconformity: @nonconformity
