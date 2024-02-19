@@ -1,1 +1,3 @@
-json.array! @nonconformities, partial: "nonconformities/nonconformity", as: :nonconformity
+json.array! @nonconformities do |nonconformity|
+  json.partial! 'nonconformities/nonconformity', nonconformity: nonconformity
+end
