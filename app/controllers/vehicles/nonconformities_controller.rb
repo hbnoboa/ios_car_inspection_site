@@ -7,6 +7,11 @@ class Vehicles::NonconformitiesController < ApplicationController
     @nonconformities = @vehicle.nonconformities
   end
 
+  def all_nonconformities
+    @nonconformities = Nonconformity.all.includes(:vehicle)
+    render json: @nonconformities
+  end
+
   # GET /nonconformities/1 or /nonconformities/1.json
   def show
   end

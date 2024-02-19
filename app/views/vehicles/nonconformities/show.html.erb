@@ -3,8 +3,8 @@
 <%= render @nonconformity %>
 
 <div>
-  <%= link_to "Edit this nonconformity", edit_nonconformity_path(@nonconformity) %> |
-  <%= link_to "Back to nonconformities", nonconformities_path %>
+  <%= link_to "Edit this nonconformity", edit_vehicle_nonconformity_path(@nonconformity) %> |
+  <%= link_to "Back to nonconformities", @vehicle %>
 
-  <%= button_to "Destroy this nonconformity", @nonconformity, method: :delete %>
+  <%= button_to "Destroy this nonconformity", [@vehicle, @nonconformity], method: :delete %>
 </div>

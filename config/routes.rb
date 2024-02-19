@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :nonconformities, module: :vehicles
   end
 
+  get 'nonconformities', to: 'vehicles/nonconformities#all_nonconformities'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
