@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-
-  resources :nonconformities
   resources :measures
   resources :quadrants
   resources :nonconformity_locals
   resources :nonconformity_levels
   resources :nonconformity_types
   resources :vehicle_parts
-  resources :vehicles
+  resources :vehicles do
+    resources :nonconformities, module: :vehicles
+  end
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',

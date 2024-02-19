@@ -17,7 +17,7 @@ class NonconformitiesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create nonconformity" do
     assert_difference("Nonconformity.count") do
-      post nonconformities_url, params: { nonconformity: { measures_id: @nonconformity.measures_id, nonconformityLevels_id: @nonconformity.nonconformityLevels_id, nonconformityLocals_id: @nonconformity.nonconformityLocals_id, nonconformityTypes_id: @nonconformity.nonconformityTypes_id, quadrants_id: @nonconformity.quadrants_id, vehicleParts_id: @nonconformity.vehicleParts_id } }
+      post nonconformities_url, params: { nonconformity: { Vehicles_id: @nonconformity.Vehicles_id, measures: @nonconformity.measures, nonconformityLevels: @nonconformity.nonconformityLevels, nonconformityLocals: @nonconformity.nonconformityLocals, nonconformityTypes: @nonconformity.nonconformityTypes, quadrants: @nonconformity.quadrants, vehicleParts: @nonconformity.vehicleParts } }
     end
 
     assert_redirected_to nonconformity_url(Nonconformity.last)
@@ -34,7 +34,7 @@ class NonconformitiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update nonconformity" do
-    patch nonconformity_url(@nonconformity), params: { nonconformity: { measures_id: @nonconformity.measures_id, nonconformityLevels_id: @nonconformity.nonconformityLevels_id, nonconformityLocals_id: @nonconformity.nonconformityLocals_id, nonconformityTypes_id: @nonconformity.nonconformityTypes_id, quadrants_id: @nonconformity.quadrants_id, vehicleParts_id: @nonconformity.vehicleParts_id } }
+    patch nonconformity_url(@nonconformity), params: { nonconformity: { Vehicles_id: @nonconformity.Vehicles_id, measures: @nonconformity.measures, nonconformityLevels: @nonconformity.nonconformityLevels, nonconformityLocals: @nonconformity.nonconformityLocals, nonconformityTypes: @nonconformity.nonconformityTypes, quadrants: @nonconformity.quadrants, vehicleParts: @nonconformity.vehicleParts } }
     assert_redirected_to nonconformity_url(@nonconformity)
   end
 

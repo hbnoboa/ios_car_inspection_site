@@ -4,11 +4,11 @@
 
 <div id="nonconformities">
   <% @nonconformities.each do |nonconformity| %>
-    <%= render nonconformity %>
+    <%= render vehicle_nonconformity %>
     <p>
-      <%= link_to "Show this nonconformity", nonconformity %>
+      <%= link_to "Show this nonconformity", vehicle_nonconformity %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New nonconformity", new_nonconformity_path %>
+<%= link_to "New nonconformity", new_vehicle_nonconformity_path %>

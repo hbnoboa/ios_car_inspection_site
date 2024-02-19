@@ -1,9 +1,10 @@
-class NonconformitiesController < ApplicationController
+class Vehicles::NonconformitiesController < ApplicationController
+  before_action :set_vehicle
   before_action :set_nonconformity, only: %i[ show edit update destroy ]
 
   # GET /nonconformities or /nonconformities.json
   def index
-    @nonconformities = Nonconformity.all
+    @nonconformities = @vehicle.nonconformities
   end
 
   # GET /nonconformities/1 or /nonconformities/1.json
@@ -12,7 +13,7 @@ class NonconformitiesController < ApplicationController
 
   # GET /nonconformities/new
   def new
-    @nonconformity = Nonconformity.new
+    @nonconformity = @vehicle.nonconformities.build
   end
 
   # GET /nonconformities/1/edit
@@ -21,11 +22,11 @@ class NonconformitiesController < ApplicationController
 
   # POST /nonconformities or /nonconformities.json
   def create
-    @nonconformity = Nonconformity.new(nonconformity_params)
+    @nonconformity = @vehicle.nonconformities.build(nonconformity_params)
 
     respond_to do |format|
       if @nonconformity.save
-        format.html { redirect_to nonconformity_url(@nonconformity), notice: "Nonconformity was successfully created." }
+        format.html { redirect_to vehicle_url(@vehicle), notice: "Nonconformity was successfully created." }
         format.json { render :show, status: :created, location: @nonconformity }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class NonconformitiesController < ApplicationController
   def update
     respond_to do |format|
       if @nonconformity.update(nonconformity_params)
-        format.html { redirect_to nonconformity_url(@nonconformity), notice: "Nonconformity was successfully updated." }
+        format.html { redirect_to vehicle_url(@vehicle), notice: "Nonconformity was successfully updated." }
         format.json { render :show, status: :ok, location: @nonconformity }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,12 +53,17 @@ class NonconformitiesController < ApplicationController
     @nonconformity.destroy
 
     respond_to do |format|
-      format.html { redirect_to nonconformities_url, notice: "Nonconformity was successfully destroyed." }
+      format.html { redirect_to vehicle_nonconformities_url, notice: "Nonconformity was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+
+  def set_vehicle
+    @vehicle = Vehicle.find(params[:vehicle_id])
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_nonconformity
       @nonconformity = Nonconformity.find(params[:id])
@@ -65,6 +71,6 @@ class NonconformitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def nonconformity_params
-      params.require(:nonconformity).permit(:vehicle_id, :vehicleParts_id, :nonconformityTypes_id, :nonconformityLevels_id, :quadrants_id, :measures_id, :nonconformityLocals_id)
+      params.require(:nonconformity).permit(:vehicleParts, :nonconformityTypes, :nonconformityLevels, :quadrants, :measures, :nonconformityLocals, :Vehicles_id)
     end
 end
