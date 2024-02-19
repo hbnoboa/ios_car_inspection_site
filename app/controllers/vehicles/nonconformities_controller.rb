@@ -66,9 +66,7 @@ class Vehicles::NonconformitiesController < ApplicationController
   private
 
   def set_vehicle
-    if params[:vehicle_id].present?
-      @vehicle = Vehicle.find(params[:vehicle_id]) 
-    end
+    @vehicle = Vehicle.find(params[:vehicle_id])
   end
 
     # Use callbacks to share common setup or constraints between actions.
