@@ -4,7 +4,8 @@
 
 <div id="vehicles">
   <% @vehicles.each do |vehicle| %>
-    <%= render vehicle %>
+    <%= vehicle.id %>
+    <%= vehicle.chassis %>
     <p>
       <%= link_to "Show this vehicle", vehicle %>
     </p>
