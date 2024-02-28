@@ -74,11 +74,22 @@ class VehiclesController < ApplicationController
       params.require(:vehicle).permit(:location, :vehicleType, :chassis, :nonconformity, :model, :status, :ship, :situation, :observations,
       et_chassis: [], profile: [], front: [], back: [], right_side: [], left_side: [])
     end
-
+    
     def create_nonconformity_for_vehicle(vehicle)
-      nonconformity_params = params.require(:nonconformity).permit(:vehicleParts, :nonconformityTypes, :nonconformityLevels, :quadrants, :measures, :nonconformityLocals, file1: [], file2: [], file3: [], file4: []).merge(vehicle_id: vehicle.id)
-      @nonconformity = Nonconformity.new(nonconformity_params)
-      @nonconformity.save
+      nonconformities_params = params[:nonconformity]
+      
+      if nonconformities_params.is_a?(Array)
+        nonconformities_params.each do |nonconformity_param|
+          permitted_params = nonconformity_param.permit(:vehicleParts, :nonconformityTypes, :nonconformityLevels, :quadrants, :measures, :nonconformityLocals, file1: [], file2: [], file3: [], file4: []).merge(vehicle_id: vehicle.id)
+          @nonconformity = Nonconformity.new(permitted_params)
+          @nonconformity.save
+        end
+      else
+        permitted_params = nonconformities_params.permit(:vehicleParts, :nonconformityTypes, :nonconformityLevels, :quadrants, :measures, :nonconformityLocals, file1: [], file2: [], file3: [], file4: []).merge(vehicle_id: vehicle.id)
+        @nonconformity = Nonconformity.new(permitted_params)
+        @nonconformity.save
+      end
     end
+    
     
 end
