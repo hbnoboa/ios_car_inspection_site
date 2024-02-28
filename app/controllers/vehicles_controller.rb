@@ -76,7 +76,7 @@ class VehiclesController < ApplicationController
     end
 
     def create_nonconformity_for_vehicle(vehicle)
-      nonconformity_params = params.require(:nonconformity).permit(:vehicleParts, :nonconformityTypes, :nonconformityLevels, :quadrants, :measures, :nonconformityLocals, file1: [], file2: [][], file3: [], file4: []).merge(vehicle_id: vehicle.id)
+      nonconformity_params = params.require(:nonconformity).permit(:vehicleParts, :nonconformityTypes, :nonconformityLevels, :quadrants, :measures, :nonconformityLocals, file1: [], file2: [], file3: [], file4: []).merge(vehicle_id: vehicle.id)
       @nonconformity = Nonconformity.new(nonconformity_params)
       @nonconformity.save
     end
