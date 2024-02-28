@@ -73,4 +73,10 @@ class VehiclesController < ApplicationController
       params.require(:vehicle).permit(:location, :vehicleType, :chassis, :nonconformity, :model, :status, :ship, :situation, :observations,
       et_chassis: [], profile: [], front: [], back: [], right_side: [], left_side: [])
     end
+
+    def create_nonconformity_for_vehicle(vehicle)
+      nonconformity_params = params[:nonconformity].merge(vehicle_id: vehicle.id)
+      @nonconformity = vehicle.nonconformities.build(nonconformity_params)
+      @nonconformity.save
+    end
 end
