@@ -77,7 +77,7 @@ class VehiclesController < ApplicationController
 
     def create_nonconformity_for_vehicle(vehicle)
       nonconformity_params = params[:nonconformity].merge(vehicle_id: vehicle.id)
-      @nonconformity = vehicle.nonconformities.build(nonconformity_params)
+      @nonconformity = Nonconformity.new(nonconformity_params)
       @nonconformity.save
     end
 end
