@@ -30,6 +30,7 @@ class VehiclesController < ApplicationController
 
     respond_to do |format|
       if @vehicle.save
+        create_nonconformity_for_vehicle(@vehicle) if params[:nonconformity].present?create_nonconformity_for_vehicle(@vehicle) if params[:nonconformity].present?
         format.html { redirect_to vehicle_url(@vehicle), notice: "Vehicle was successfully created." }
         format.json { render :show, status: :created, location: @vehicle }
       else
